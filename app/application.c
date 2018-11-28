@@ -53,7 +53,7 @@ void tmp112_event_handler(bc_tmp112_t *self, bc_tmp112_event_t event, void *even
     // Temeprature is to low
     if ((value < LIMIT_LOW_TEMPERATURE) && send_alarm)
     {
-        bc_radio_pub_float("/low", &value);
+        bc_radio_pub_float("low", &value);
         send_alarm = false;
         bc_scheduler_plan_from_now(send_alarm_task_id, ALARM_REPEAT_INTERVAL);
     }
@@ -61,7 +61,7 @@ void tmp112_event_handler(bc_tmp112_t *self, bc_tmp112_event_t event, void *even
     // Temeprature is to high
     if ((value > LIMIT_HIGH_TEMPERATURE) && send_alarm)
     {
-        bc_radio_pub_float("/high", &value);
+        bc_radio_pub_float("high", &value);
         send_alarm = false;
         bc_scheduler_plan_from_now(send_alarm_task_id, ALARM_REPEAT_INTERVAL);
     }
